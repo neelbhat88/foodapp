@@ -1,4 +1,7 @@
 Foodapp::Application.routes.draw do
+  resources :food_items
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

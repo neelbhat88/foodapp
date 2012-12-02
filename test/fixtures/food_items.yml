@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  category: MyString
+  epxpirationdays: 1
+  datebought: 2012-12-02 16:28:31
+  usebydate: 2012-12-02 16:28:31
+
+two:
+  name: MyString
+  category: MyString
+  epxpirationdays: 1
+  datebought: 2012-12-02 16:28:31
+  usebydate: 2012-12-02 16:28:31

@@ -1,4 +1,9 @@
 Foodapp::Application.routes.draw do
+  get "users/new"
+
+  match '/help', to: 'static_pages#help'
+  match '/signup', to: 'users#new'
+
   resources :food_items
 
 
@@ -51,7 +56,7 @@ Foodapp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'static_pages#home'
 
   # See how all your routes lay out with "rake routes"
 

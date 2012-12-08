@@ -49,7 +49,9 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: foodapp_production
+  database: d4ifocdr9nsp9n
   pool: 5
-  username: foodapp
-  password:
+  username: yrxzdekjanzsve
+  password: WBSl3CSCqitrGktfIGwOmXoUl0
+  host: ec2-54-243-248-219.compute-1.amazonaws.com
+  port: 5432

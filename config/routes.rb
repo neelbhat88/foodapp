@@ -1,7 +1,8 @@
 Foodapp::Application.routes.draw do
-  get "users/new"
+  resources :users
 
   match '/help', to: 'static_pages#help'
+
   match '/signup', to: 'users#new'
 
   resources :food_items

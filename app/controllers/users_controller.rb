@@ -11,11 +11,15 @@ class UsersController < ApplicationController
   	@user = User.new(params[:user])
 
     if User.all.count >= 3
-      flash[:error] = "We have reached the maximum users allowed in beta mode. Please try
+      flash.now[:error] = "We have reached the maximum users allowed in beta mode. Please try
                       back later"
     else
       if @user.save
         flash[:success] = "#{@user.name}, welcome to Neel's Food App!"
+
+        # Store logged in userId into session
+        sign_in(@user)
+
         redirect_to user_url(@user) 
         return
       end

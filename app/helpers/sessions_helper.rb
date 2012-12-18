@@ -17,6 +17,10 @@ module SessionsHelper
 		!current_user.nil?
 	end
 
+	def current_user? (user)
+		user == current_user
+	end
+
 	# Almost like a setter?
 	def current_user=(user)
 		# Create an instance variable so that it can be viewed by the controller and view

@@ -2,6 +2,7 @@ Foodapp::Application.routes.draw do
   resources :users
   resources :food_items
   resources :sessions, only: [:new, :create, :destroy]
+  resources :global_food_items
 
   match '/help', to: 'static_pages#help'
 

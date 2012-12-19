@@ -11,17 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218041949) do
-
-  create_table "food_items", :force => true do |t|
-    t.string   "name"
-    t.string   "category"
-    t.integer  "epxpirationdays"
-    t.datetime "datebought"
-    t.datetime "usebydate"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
+ActiveRecord::Schema.define(:version => 20121219040825) do
 
   create_table "global_food_items", :force => true do |t|
     t.string   "name"

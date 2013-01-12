@@ -1,0 +1,21 @@
+<h1>Add a food item</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+  	<%= render 'shared/error_messages', :model => @userfooditem %>
+    <%= form_for(@userfooditem) do |f| %>
+
+      <%= f.select :global_food_item_id, GlobalFoodItem.all.collect {|gfi| [gfi.name, gfi.id]} %>      
+
+      <%= f.label :datebought, "Date Bought" %>
+      <%= f.text_field :datebought %>
+      <!--<%= select_date Date.today, :prefix => :datebought %>  -->
+
+      <!--<%= f.label :usebydate, "Useby Date" %>
+      <%= f.text_field :usebydate %>-->
+      <!--<%= select_date Date.today, :prefix => :usebydate %>-->
+
+      <%= f.submit "Save", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

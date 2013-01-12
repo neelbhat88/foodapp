@@ -7,7 +7,7 @@ class GlobalFoodItemsController < ApplicationController
 		@global_food_item = GlobalFoodItem.new
 	end
 
-	def create
+	def create		
 		@global_food_item = GlobalFoodItem.new(params[:global_food_item])
 
 		if @global_food_item.save

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121219040825) do
+ActiveRecord::Schema.define(:version => 20121219044315) do
 
   create_table "global_food_items", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(:version => 20121219040825) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
+
+  create_table "user_food_items", :force => true do |t|
+    t.integer  "global_food_item_id"
+    t.integer  "user_id"
+    t.date     "datebought"
+    t.date     "usebydate"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "user_food_items", ["global_food_item_id"], :name => "index_user_food_items_on_global_food_item_id"
+  add_index "user_food_items", ["user_id"], :name => "index_user_food_items_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

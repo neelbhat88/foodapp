@@ -1,0 +1,11 @@
+<h3> Your Food Items </h3>
+<ul>
+<% @userfooditems.each do |ufi| %>
+	<li>
+		<%= ufi.global_food_item.name %>, <%= ufi.global_food_item.category %>, <%= ufi.datebought %>, <%= ufi.usebydate %>  		
+	</li>
+<% end %>
+</ul>
+
+<%= link_to "Add", new_user_food_item_path %>
+

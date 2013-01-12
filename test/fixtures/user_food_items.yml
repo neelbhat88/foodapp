@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  global_food_item: 
+  user: 
+  datebought: 2012-12-18
+  usebydate: 2012-12-18
+
+two:
+  global_food_item: 
+  user: 
+  datebought: 2012-12-18
+  usebydate: 2012-12-18

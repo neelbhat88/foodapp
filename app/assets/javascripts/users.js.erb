@@ -1,0 +1,25 @@
+init_typeahead = function(array, url){
+	$(document).ready(function(){
+		$('#typeahead').typeahead({source: array});
+
+		// ToDo: Perform error check if typeahead value is not correct
+		$('#typeahead').keyup(function(e){
+			var code = e.which;
+			if (code == 13 && !$('.typeahead').is(":visible")) // Enter key
+			{
+				e.preventDefault();				
+				
+				$.ajax({
+					url: url, 
+					data: {itemName: $('#typeahead').val()},
+					success: function() {},
+				});
+
+				$('#typeahead').val('');
+
+				return false;
+			}
+		});
+	});
+};
+

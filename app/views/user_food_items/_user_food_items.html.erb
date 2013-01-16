@@ -1,0 +1,16 @@
+<% if @user.user_food_items.any? %>
+	<% #Only select items with status = 0 (Active) %>
+	<% @user.user_food_items.where(:status => 0).each do |ufi| %>
+		<li>
+			<%= ufi.global_food_item.name %>, <%= ufi.global_food_item.category %>, <%= ufi.datebought %>, <%= ufi.usebydate %>
+				| <%= link_to "Finished", user_food_item_path(ufi, :status => 1), method: "Delete", :remote => true %> 
+				<%= link_to "Threw Away", user_food_item_path(ufi, :status => 2), method: "Delete", :remote => true %>
+		</li>
+	<% end %>
+<% else %>
+	You have no items
+<% end %>
+
+<div>
+	<%= link_to "Add Item", new_user_food_item_path %>
+</div>

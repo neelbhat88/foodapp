@@ -12,6 +12,8 @@ Foodapp::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete #Makes it a DELETE request
 
+  match '/addItem', to: 'user_food_items#addItem'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

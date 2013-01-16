@@ -8,6 +8,9 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    
+    # Pass all items in global food db up to view
+    @global_food_items = GlobalFoodItem.select("name").all.map{|item| item.name}
   end
 
   def create

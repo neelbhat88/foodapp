@@ -1,22 +1,13 @@
+<%= javascript_tag "init_typeahead(" + @global_food_items.to_json + ", '" + 
+	url_for(:action => 'addItem', :controller => 'user_food_items') +
+	"')" %>
+
 <h1> Welcome to your fridge, <%= @user.name %> </h1>
 
 <div class="well">
-<input id="typeahead" type="text" class="span3" data-provide="typeahead" data-items="4" />
+	<input id="typeahead" type="text" class="span3" data-provide="typeahead" data-items="4" />	
 </div>
 
-<div>
-	<% if @user.user_food_items.any? %>
-		<% @user.user_food_items.each do |ufi| %>
-			<li>
-				<%= ufi.global_food_item.name %>, <%= ufi.global_food_item.category %>, <%= ufi.datebought %>, <%= ufi.usebydate %>
-					| <%= link_to "Remove", user_food_item_path(ufi), method: "Delete" %>
-			</li>
-		<% end %>
-	<% else %>
-		You have no items
-	<% end %>
-
-	<div>
-		<%= link_to "Add Item", new_user_food_item_path %>
-	</div>
-</div>  
+<div id="usersItems">
+	<%= render 'user_food_items/user_food_items' %>
+</div>

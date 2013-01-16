@@ -22,11 +22,36 @@ class UserFoodItemsController < ApplicationController
 		end
 	end
 
-	def destroy
-		UserFoodItem.find(params[:id]).destroy
-		flash[:success] = "Item deleted!"
+	def addItem
+		globalfooditem = GlobalFoodItem.find_by_name(params[:itemName])
 
-		redirect_to user_url(current_user)
+		if globalfooditem
+			datebought = Date.today
+			usebydate = datebought + globalfooditem.avgexpirationdays
+
+			@user = current_user
+			@userfooditem = @user.user_food_items.build(global_food_item_id: globalfooditem.id,
+									 datebought: datebought, usebydate: usebydate)
+
+			#ToDo: Error checking here
+			@userfooditem.save
+		end
+	end
+
+	def destroy
+		#UserFoodItem.find(params[:id]).destroy
+		userfooditem = UserFoodItem.find(params[:id])
+
+		userfooditem.update_attributes(:status => params[:status].to_i)
+		userfooditem.update_attributes(:removedate => Date.today)
+		#flash[:success] = "Item deleted!"
+
+		@user = current_user
+
+		respond_to do |format|
+      		format.html { redirect_to user_url(current_user) }
+      		format.js
+    	end		
 	end
 
 	def edit

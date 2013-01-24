@@ -4,6 +4,7 @@ Foodapp::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :global_food_items
   resources :user_food_items, only: [:new, :create, :destroy]
+  resources :fridges
 
   match '/help', to: 'static_pages#help'
 

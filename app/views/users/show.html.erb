@@ -2,7 +2,10 @@
 	url_for(:action => 'addItem', :controller => 'user_food_items') +
 	"')" %>
 
-<h1> Welcome to your fridge, <%= @user.name %> </h1>
+<h1> Welcome to your kitchen, <%= @user.name %> </h1>
+<div>
+	<%= link_to "Fridge Settings", fridge_path %>
+</div>
 
 <!-- <div class="">
 	<input id="typeahead" placeholder="Type to add item..." type="text" class="span3" data-provide="typeahead" data-items="4" />	

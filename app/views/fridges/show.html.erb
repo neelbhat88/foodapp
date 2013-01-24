@@ -1,0 +1,21 @@
+<h1> Your fridges </h1>
+
+<div id="fridges">
+	<% if @fridges.any? %>
+		<ul style="list-style:none">
+			<% @fridges.each do |f| %>
+				<li>
+					<span style="font-weight: bold; font-size:1.2em"><%= f.name %></span>
+					<% if f.users.count > 1 %><span style="color: green"> Shared! </span> <% end %>
+					| <!-- <%= link_to "Edit", edit_fridge_path(f) %> -->
+					  <%= link_to "Remove", fridge_path(f), method: "Delete", confirm: "Are you sure?" %>
+				</li>
+			<% end %>
+		</ul>
+	<% else %>
+		No fridges added.
+	<% end %>
+	<div>
+		<%= link_to "Add Fridge", new_fridge_path(@current_user.id) %>
+	</div>
+</div>

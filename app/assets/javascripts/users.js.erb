@@ -1,9 +1,9 @@
 init_typeahead = function(array, url){
 	$(document).ready(function(){
-		$('#typeahead').typeahead({source: array});
+		$('.typeaheadTxt').typeahead({source: array});
 
 		// ToDo: Perform error check if typeahead value is not correct
-		$('#typeahead').keyup(function(e){
+		$('.typeaheadTxt').keyup(function(e){
 			var code = e.which;
 			if (code == 13 && !$('.typeahead').is(":visible")) // Enter key
 			{
@@ -11,11 +11,11 @@ init_typeahead = function(array, url){
 				
 				$.ajax({
 					url: url, 
-					data: {itemName: $('#typeahead').val()},
+					data: {itemName: $(this).val(), fridgeId: $(this).attr('id')},
 					success: function() {},
 				});
 
-				$('#typeahead').val('');
+				$(this).val('');
 
 				return false;
 			}

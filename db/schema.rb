@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130116043042) do
+ActiveRecord::Schema.define(:version => 20130124043005) do
+
+  create_table "fridges", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "fridges_users", :id => false, :force => true do |t|
+    t.integer "fridge_id"
+    t.integer "user_id"
+  end
 
   create_table "global_food_items", :force => true do |t|
     t.string   "name"
@@ -23,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20130116043042) do
 
   create_table "user_food_items", :force => true do |t|
     t.integer  "global_food_item_id"
-    t.integer  "user_id"
+    t.integer  "fridge_id"
     t.date     "datebought"
     t.date     "usebydate"
     t.datetime "created_at",                         :null => false
@@ -32,8 +43,8 @@ ActiveRecord::Schema.define(:version => 20130116043042) do
     t.date     "removedate"
   end
 
+  add_index "user_food_items", ["fridge_id"], :name => "index_user_food_items_on_user_id"
   add_index "user_food_items", ["global_food_item_id"], :name => "index_user_food_items_on_global_food_item_id"
-  add_index "user_food_items", ["user_id"], :name => "index_user_food_items_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

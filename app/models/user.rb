@@ -7,7 +7,10 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :name, :password, :password_confirmation
   has_secure_password
-  has_many :user_food_items
+  #has_many :user_food_items
+  has_and_belongs_to_many :fridges
+
+  has_many :user_food_items, :through => :fridges
 
   # Before save callback
   before_save { |user| user.email = email.downcase }

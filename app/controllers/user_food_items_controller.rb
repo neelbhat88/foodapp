@@ -24,14 +24,14 @@ class UserFoodItemsController < ApplicationController
 
 	def addItem
 		globalfooditem = GlobalFoodItem.find_by_name(params[:itemName])
-		fridge = Fridge.find(params[:fridgeId])
+		@fridge = Fridge.find(params[:fridgeId])
 
 		if globalfooditem
 			datebought = Date.today
 			usebydate = datebought + globalfooditem.avgexpirationdays
 
 			@user = current_user
-			@userfooditem = fridge.user_food_items.build(global_food_item_id: globalfooditem.id,
+			@userfooditem = @fridge.user_food_items.build(global_food_item_id: globalfooditem.id,
 									 datebought: datebought, usebydate: usebydate, status: 0)
 
 			#ToDo: Error checking here
@@ -42,6 +42,7 @@ class UserFoodItemsController < ApplicationController
 	def destroy
 		#UserFoodItem.find(params[:id]).destroy
 		userfooditem = UserFoodItem.find(params[:id])
+		@fridge = Fridge.find(userfooditem.fridge_id)
 
 		userfooditem.update_attributes(:status => params[:status].to_i)
 		userfooditem.update_attributes(:removedate => Date.today)

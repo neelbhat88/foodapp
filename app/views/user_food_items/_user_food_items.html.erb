@@ -4,20 +4,10 @@
 			<h3><%= f.name %></h3>
 			<input id="<%= f.id %>" placeholder="Type to add item..." type="text" class="typeaheadTxt span3" data-provide="typeahead" data-items="4" />
 		</div>
-		<% #Only select items with status = 0 (Active) %>
-		<div class="well">
-			<% if f.user_food_items.any? %>
-				<% f.user_food_items.where(:status => 0).each do |ufi| %>
-					<li style="list-style: none">
-						<%= ufi.global_food_item.name %>, <%= ufi.global_food_item.category %>, <%= ufi.datebought %>, <%= ufi.usebydate %>
-							| <%= link_to "Finished", user_food_item_path(ufi, :status => 1), method: "Delete", :remote => true %> 
-							<%= link_to "Threw Away", user_food_item_path(ufi, :status => 2), method: "Delete", :remote => true %>
-					</li>
-				<% end %>
-			<% else %>
-				This fridge is empty! Is that possible
-			<% end %>
-		</div>
+		<% #Only select items with status = 0 (Active) %>		
+
+		<%= render 'user_food_items/fridge_items', :fridge => f %>		
+		
 	<% end %>
 <% else %>
 	You have no fridges

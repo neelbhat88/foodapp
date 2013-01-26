@@ -1,3 +1,4 @@
-$('#usersItems').html("<%= escape_javascript(render('user_food_items/user_food_items')) %>");
+var fridgeId = <%= @fridge.id %>
+$('#' + fridgeId + '_items').html("<%= escape_javascript(render('user_food_items/fridge_items', :fridge => @fridge)) %>");
 
 

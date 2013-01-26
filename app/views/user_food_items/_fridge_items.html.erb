@@ -1,0 +1,16 @@
+<div id="<%= fridge.id %>_items">
+	<div class="well">
+		<% if fridge.user_food_items.any? %>
+			<% fridge.user_food_items.where(:status => 0).sort_by(&:usebydate).each do |ufi| %>
+				<li style="list-style: none">
+					<span style="font-weight:bold"><%= ufi.global_food_item.name %></span>
+					 - Try to finish by: <%= ufi.usebydate.strftime("%m/%d/%y") %>
+						| <%= link_to "Finished", user_food_item_path(ufi, :status => 1), method: "Delete", :remote => true %> 
+						<%= link_to "Threw Away", user_food_item_path(ufi, :status => 2), method: "Delete", :remote => true %>
+				</li>
+			<% end %>
+		<% else %>
+			This fridge is empty!
+		<% end %>
+	</div>
+</div>

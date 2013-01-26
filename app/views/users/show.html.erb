@@ -3,8 +3,10 @@
 	"')" %>
 
 <h1> Welcome to your kitchen, <%= @user.name %> </h1>
+<h2> Today's date is: <%= Date.today.strftime("%m/%d/%y") %> </h2>
 <div>
-	<%= link_to "Fridge Settings", fridge_path %>
+	<%= link_to "Fridge Settings", fridge_path %> |
+	<%= link_to "Global Food Items", global_food_items_path %>
 </div>
 
 <!-- <div class="">

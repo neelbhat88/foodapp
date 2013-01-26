@@ -12,7 +12,11 @@ class GlobalFoodItemsController < ApplicationController
 
 		if @global_food_item.save
 			flash[:success] = "Successfully saved Food Item: #{@global_food_item.name}"
-			redirect_to global_food_items_url
+			if params[:save_add_another]
+				redirect_to new_global_food_item_url
+			else
+				redirect_to global_food_items_url
+			end
 		else
 			render 'new'
 		end

@@ -63,8 +63,11 @@ class UserFoodItemsController < ApplicationController
 	# Fix this later
 	def update
 		@user_food_item = UserFoodItem.find(params[:id])
+		
+		new_date = Date.strptime(params[:user_food_item][:usebydate], "%m/%d/%y").strftime("%Y-%m-%d")
 
-		if @user_food_item.update_attributes(params[:user_food_item])
+		if @user_food_item.update_attributes(:fridge_id => params[:user_food_item][:fridge_id],
+											 :usebydate => new_date)
 			flash[:success] = "Successfully updated Item: #{@user_food_item.global_food_item.name}"
 			redirect_to user_url(current_user)
 		else

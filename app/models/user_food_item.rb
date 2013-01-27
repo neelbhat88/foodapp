@@ -2,7 +2,7 @@ class UserFoodItem < ActiveRecord::Base
   belongs_to :global_food_item
   belongs_to :fridge
 
-  attr_accessible :global_food_item_id, :datebought, :usebydate, :status, :removedate
+  attr_accessible :global_food_item_id, :fridge_id, :datebought, :usebydate, :status, :removedate
 
   validates :global_food_item_id, presence: true
   validates :fridge_id, presence: true

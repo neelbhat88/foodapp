@@ -1,0 +1,19 @@
+<h1>Edit Food Item</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+  	<%= render 'shared/error_messages', :model => @user_food_item %>
+    <%= form_for(@user_food_item) do |f| %>
+      
+      <%= f.label :name, @user_food_item.global_food_item.name, :readonly => true%>
+
+      <%= f.label :fridge_id, "Fridge" %>
+      <%= f.select :fridge_id, @current_user.fridges.collect {|f| [f.name, f.id]} %>
+
+      <%= f.label :usebydate, "Try to finsh by"%>
+      <%= f.text_field :usebydate, :value => @user_food_item.usebydate.strftime("%m/%d/%y") %>
+
+      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

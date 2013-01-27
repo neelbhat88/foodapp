@@ -44,16 +44,20 @@ class UserFoodItemsController < ApplicationController
 		userfooditem = UserFoodItem.find(params[:id])
 		@fridge = Fridge.find(userfooditem.fridge_id)
 
-		userfooditem.update_attributes(:status => params[:status].to_i)
-		userfooditem.update_attributes(:removedate => Date.today)
-		#flash[:success] = "Item deleted!"
+		if params[:status] == "-1"
+			UserFoodItem.find(params[:id]).destroy()
+		else
+			userfooditem.update_attributes(:status => params[:status].to_i)
+			userfooditem.update_attributes(:removedate => Date.today)
+			#flash[:success] = "Item deleted!"		
+		end	
 
 		@user = current_user
 
 		respond_to do |format|
       		format.html { redirect_to user_url(current_user) }
       		format.js
-    	end		
+    	end
 	end
 
 	def edit

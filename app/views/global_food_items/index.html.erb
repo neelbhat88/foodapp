@@ -1,6 +1,6 @@
 <h3> All Food Items </h3>
 <ul>
-<% @global_food_items.each do |gfi| %>
+<% @global_food_items.sort_by(&:name).each do |gfi| %>
 	<li>
 		<%= gfi.name %>, <%= gfi.category %>, <%= gfi.avgexpirationdays %>  
 		<%= link_to "Edit", edit_global_food_item_path(gfi) %> |

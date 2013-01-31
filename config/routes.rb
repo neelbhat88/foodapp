@@ -15,6 +15,8 @@ Foodapp::Application.routes.draw do
 
   match '/addItem', to: 'user_food_items#addItem'
 
+  match '/addAsLeftovers', to: 'user_food_items#addAsLeftovers'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

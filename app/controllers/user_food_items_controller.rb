@@ -39,6 +39,23 @@ class UserFoodItemsController < ApplicationController
 		end
 	end
 
+	def addAsLeftovers
+		itemname = params[:itemName]
+		@fridge = Fridge.find(params[:fridgeId])
+
+		if globalfooditem
+			datebought = Date.today
+			usebydate = datebought + globalfooditem.avgexpirationdays
+
+			@user = current_user
+			@userfooditem = @fridge.user_food_items.build(global_food_item_id: globalfooditem.id,
+									 datebought: datebought, usebydate: usebydate, status: 0)
+
+			#ToDo: Error checking here
+			@userfooditem.save
+		end
+	end
+
 	def destroy
 		#UserFoodItem.find(params[:id]).destroy
 		userfooditem = UserFoodItem.find(params[:id])

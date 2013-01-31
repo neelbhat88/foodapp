@@ -71,7 +71,8 @@ class UserFoodItemsController < ApplicationController
 		new_date = Date.strptime(params[:user_food_item][:usebydate], "%m/%d/%y").strftime("%Y-%m-%d")
 
 		if @user_food_item.update_attributes(:fridge_id => params[:user_food_item][:fridge_id],
-											 :usebydate => new_date)
+											 :usebydate => new_date,
+											 :price => params[:user_food_item][:price])
 			flash[:success] = "Successfully updated Item: #{@user_food_item.global_food_item.name}"
 			redirect_to user_url(current_user)
 		else

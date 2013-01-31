@@ -2,7 +2,7 @@
 <ul>
 <% @global_food_items.sort_by(&:name).each do |gfi| %>
 	<li>
-		<%= gfi.name %>, <%= gfi.category %>, <%= gfi.avgexpirationdays %>  
+		<%= gfi.name %>, <%= gfi.category %>, <%= gfi.avgexpirationdays %>
 		<%= link_to "Edit", edit_global_food_item_path(gfi) %> |
 		<%= link_to "Delete", global_food_item_path(gfi), method: "Delete" %>
 	</li>

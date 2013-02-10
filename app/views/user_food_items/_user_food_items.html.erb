@@ -2,8 +2,7 @@
 	<% @user.fridges.each do |f| %>
 		<div>
 			<h3><%= f.name %></h3>
-			<input id="<%= f.id %>" placeholder="Type to add item..." type="text" class="typeaheadTxt span3" data-provide="typeahead" data-items="4" />
-			
+			<input id="<%= f.id %>" placeholder="Type to add item..." type="text" class="typeaheadTxt span3" data-provide="typeahead" data-items="4" />			
 		</div>
 		<% #Only select items with status = 0 (Active) %>		
 

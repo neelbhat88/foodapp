@@ -32,7 +32,8 @@ class UserFoodItemsController < ApplicationController
 
 			@user = current_user
 			@userfooditem = @fridge.user_food_items.build(global_food_item_id: globalfooditem.id,
-									 datebought: datebought, usebydate: usebydate, status: 0)
+									 datebought: datebought, usebydate: usebydate, status: 0,
+									 name: globalfooditem.name)
 
 			#ToDo: Error checking here
 			@userfooditem.save
@@ -43,17 +44,15 @@ class UserFoodItemsController < ApplicationController
 		itemname = params[:itemName]
 		@fridge = Fridge.find(params[:fridgeId])
 
-		if globalfooditem
-			datebought = Date.today
-			usebydate = datebought + globalfooditem.avgexpirationdays
+		
+		datebought = Date.today
+		#usebydate = datebought + globalfooditem.avgexpirationdays
 
-			@user = current_user
-			@userfooditem = @fridge.user_food_items.build(global_food_item_id: globalfooditem.id,
-									 datebought: datebought, usebydate: usebydate, status: 0)
+		@user = current_user
+		@userfooditem = @fridge.user_food_items.build(name: itemname, datebought: datebought, status: 0)
 
-			#ToDo: Error checking here
-			@userfooditem.save
-		end
+		#ToDo: Error checking here
+		@userfooditem.save
 	end
 
 	def destroy

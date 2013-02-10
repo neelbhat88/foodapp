@@ -39,6 +39,7 @@ class GlobalFoodItemsController < ApplicationController
 
 	def destroy
 		GlobalFoodItem.find(params[:id]).destroy
+		UserFoodItem.where("global_food_item_id = ?", params[:id]).destroy_all()
 		flash[:success] = "Food Item deleted!"
 
 		redirect_to global_food_items_url

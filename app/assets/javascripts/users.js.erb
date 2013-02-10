@@ -1,5 +1,6 @@
-init_typeahead = function(array, url){
-	$(document).ready(function(){
+init_typeahead = function(array, addItemUrl){
+	$(document).ready(function(){		
+		
 		$('.typeaheadTxt').typeahead({source: array});
 
 		// ToDo: Perform error check if typeahead value is not correct
@@ -10,7 +11,7 @@ init_typeahead = function(array, url){
 				e.preventDefault();				
 				
 				$.ajax({
-					url: url, 
+					url: addItemUrl, 
 					data: {itemName: $(this).val(), fridgeId: $(this).attr('id')},
 					success: function() {},
 				});
@@ -19,7 +20,7 @@ init_typeahead = function(array, url){
 
 				return false;
 			}
-		});
+		});	
 	});
 };
 

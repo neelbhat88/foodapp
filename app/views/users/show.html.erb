@@ -1,6 +1,5 @@
 <%= javascript_tag "init_typeahead(" + @global_food_items.to_json + ", '" + 
-	url_for(:action => 'addItem', :controller => 'user_food_items') +
-	"')" %>
+	url_for(:action => 'addItem', :controller => 'user_food_items') + "');" %>
 
 <h1> Welcome to your kitchen, <%= @user.name %> </h1>
 <h2> Today's date is: <%= Date.today.strftime("%m/%d/%y") %> </h2>

@@ -1,5 +1,5 @@
-<% if @user.fridges.any? %>
-	<% @user.fridges.each do |f| %>
+<% if fridges %>
+	<% fridges.each do |f| %>
 		<div>
 			<h3><%= f.name %></h3>
 			<input id="<%= f.id %>" placeholder="Type to add item..." type="text" class="typeaheadTxt span3" data-provide="typeahead" data-items="4" />			
@@ -10,9 +10,8 @@
 		
 	<% end %>
 <% else %>
-	You have no fridges
+	<div class="ml"> 
+		<span class="font_large"> You have no fridges! </span>
+		<span class="font_medium"> <%= link_to "Click here", new_fridge_path(@current_user.id) %>  to create one</span>
+	</div>	
 <% end %>
-
-<!-- <div>
-	<%= link_to "Add Item", new_user_food_item_path %>
-</div> -->

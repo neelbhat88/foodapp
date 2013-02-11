@@ -4,7 +4,7 @@ module SessionsHelper
         session[:userId] = user.id
 
         # Assignment function
-        self.current_user = user
+        self.current_user = User.find_by_id(session[:userId]) #CTDUserRepository.GetCTDUserById(user.id)        
 	end
 
 	def sign_out()		
@@ -15,6 +15,12 @@ module SessionsHelper
 
 	def signed_in?
 		!current_user.nil?
+		
+		#if current_user = nil
+		#	return false
+		#else
+		#	return true
+		#end
 	end
 
 	def current_user? (user)
@@ -29,6 +35,10 @@ module SessionsHelper
 
 	# Almost like a getter?
 	def current_user
-		@current_user ||= User.find_by_id(session[:userId])
+		@current_user ||= User.find_by_id(session[:userId]) #CTDUserRepository.GetCTDUserById(session[:userId])
+	end
+
+	def current_userid
+		@current_userId = session[:userId]
 	end
 end

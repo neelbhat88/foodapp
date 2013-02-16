@@ -1,3 +1,5 @@
+include ActionView::Helpers::NumberHelper
+
 class UserFoodItem < ActiveRecord::Base
   belongs_to :global_food_item
   belongs_to :fridge

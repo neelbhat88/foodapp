@@ -9,7 +9,7 @@
       <%= f.text_field :name%>
 
       <%= f.label :category %>
-      <%= f.select :category, ['Baking','Beverages','Canned Goods','Cereal/Breakfast','Condiments','Dairy','Deli','Frozen Foods','Meats','Pasta/Rice','Produce','Snacks','Spices'], {:prompt => "Select a category"} %>
+      <%= f.select :category, @global_food_item.GetCategories(), {:prompt => "Select a category"} %>
 
       <%= f.label :avgexpirationdays, "Average Expiration Days"%>
       <%= f.text_field :avgexpirationdays %>

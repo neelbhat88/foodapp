@@ -1,13 +1,12 @@
 <h3> All Food Items </h3>
+<%= link_to "Add", new_global_food_item_path %>
 <ul>
 <% @global_food_items.sort_by(&:name).each do |gfi| %>
 	<li>
-		<%= gfi.name %>, <%= gfi.category %>, <%= gfi.avgexpirationdays %>
-		<%= link_to "Edit", edit_global_food_item_path(gfi) %> |
+		<%= link_to gfi.name, edit_global_food_item_path(gfi) %>, <%= gfi.category %>, <%= gfi.avgexpirationdays %>
+		|
 		<%= link_to "Delete", global_food_item_path(gfi), :confirm => "Are you sure?", method: "Delete" %>
 	</li>
 <% end %>
 </ul>
-
-<%= link_to "Add", new_global_food_item_path %>
 

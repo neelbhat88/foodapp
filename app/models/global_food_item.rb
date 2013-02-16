@@ -1,5 +1,7 @@
 class GlobalFoodItem < ActiveRecord::Base
-  attr_accessible :avgexpirationdays, :category, :name
+  attr_accessible :avgexpirationdays, :category, :name, :photo
+
+  has_attached_file :photo, :styles => { :medium => "300x300>", :small => "100x100>" }, :default_url => "/images/:style/missing.png"  					
 
   validates :name, presence: true
   validates :category, presence: true

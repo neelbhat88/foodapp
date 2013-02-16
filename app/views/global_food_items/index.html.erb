@@ -3,6 +3,7 @@
 <ul>
 <% @global_food_items.sort_by(&:name).each do |gfi| %>
 	<li>
+		<%= image_tag gfi.photo.url(:small) %>
 		<%= link_to gfi.name, edit_global_food_item_path(gfi) %>, <%= gfi.category %>, <%= gfi.avgexpirationdays %>
 		|
 		<%= link_to "Delete", global_food_item_path(gfi), :confirm => "Are you sure?", method: "Delete" %>

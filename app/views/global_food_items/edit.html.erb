@@ -3,7 +3,7 @@
 <div class="row">
   <div class="span6 offset3">
   	<%= render 'shared/error_messages', :model => @global_food_item %>
-    <%= form_for(@global_food_item) do |f| %>
+    <%= form_for(@global_food_item, :html => { :multipart => true }) do |f| %>
 
       <%= f.label :name %>
       <%= f.text_field :name%>
@@ -13,6 +13,9 @@
 
       <%= f.label :avgexpirationdays, "Average Expiration Days"%>
       <%= f.text_field :avgexpirationdays %>
+
+      <%= f.file_field :photo %>
+      <br>
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>

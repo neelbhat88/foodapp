@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130131043325) do
+ActiveRecord::Schema.define(:version => 20130216053610) do
 
   create_table "fridges", :force => true do |t|
     t.string   "name"
@@ -28,8 +28,12 @@ ActiveRecord::Schema.define(:version => 20130131043325) do
     t.string   "name"
     t.string   "category"
     t.integer  "avgexpirationdays"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "user_food_items", :force => true do |t|

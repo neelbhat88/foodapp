@@ -11,10 +11,10 @@
       <%= f.select :fridge_id, @current_user.fridges.collect {|f| [f.name, f.id]} %>
 
       <%= f.label :usebydate, "Try to finsh by"%>
-      <%= f.text_field :usebydate, :value => @user_food_item.usebydate.strftime("%m/%d/%y") %>
+      <%= f.text_field :usebydate, :value => @user_food_item.DisplayUseByDate() %>
 
       <%= f.label :price, "Cost"%>
-      <%= f.text_field :price, :value => number_to_currency(@user_food_item.price, :unit => "$") %>
+      <%= f.text_field :price, :value => number_with_precision(@user_food_item.price, :precision => 2)%>
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>

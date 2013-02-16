@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @ctd_user = CTDUserRepository.GetCTDUserById(params[:id])
+    #@ctd_user = CTDUserRepository.GetCTDUserById(params[:id])
+    @user = User.find(params[:id])
 
     # Pass all items in global food db up to view for the typeahead
     @global_food_items = GlobalFoodItem.select("name").all.map{|item| item.name}

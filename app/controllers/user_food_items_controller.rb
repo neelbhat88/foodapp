@@ -29,11 +29,16 @@ class UserFoodItemsController < ApplicationController
 		if globalfooditem
 			datebought = Date.today
 			usebydate = datebought + globalfooditem.avgexpirationdays
+			
+			lastitem = @fridge.user_food_items.where("global_food_item_id = ? and price > 0", globalfooditem.id).order("updated_at DESC").first
+			if lastitem
+				lastprice = lastitem.price.to_d
+			end
 
 			@user = current_user
 			@userfooditem = @fridge.user_food_items.build(global_food_item_id: globalfooditem.id,
 									 datebought: datebought, usebydate: usebydate, status: 0,
-									 name: globalfooditem.name)
+									 name: globalfooditem.name, price: lastprice)
 
 			#ToDo: Error checking here
 			@userfooditem.save
@@ -88,7 +93,7 @@ class UserFoodItemsController < ApplicationController
 
 		if @user_food_item.update_attributes(:fridge_id => params[:user_food_item][:fridge_id],
 											 :usebydate => new_date,
-											 :price => params[:user_food_item][:price])
+											 :price => params[:user_food_item][:price].to_d)
 			flash[:success] = "Successfully updated Item: #{@user_food_item.global_food_item.name}"
 			redirect_to user_url(current_user)
 		else

@@ -8,4 +8,12 @@ class UserFoodItem < ActiveRecord::Base
   validates :fridge_id, presence: true
   validates :datebought, presence: true
   #validates :usebydate, presence: true
+
+  def DisplayUseByDate
+  	self.usebydate.strftime("%m/%d/%y")
+  end
+
+  def DisplayPrice
+  	number_to_currency(self.price, :unit => "$")  	
+  end
 end

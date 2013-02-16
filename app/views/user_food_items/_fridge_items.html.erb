@@ -1,13 +1,13 @@
 <div id="<%= fridge.id %>_items" class="food_items">
 	<div class="well">
-		<% if fridge.user_food_items.where(:status => 0).any? %>
-			<% fridge.user_food_items.where(:status => 0).sort_by(&:usebydate).each do |ufi| %>
+		<% if fridge.GetFoodItems().any? %>
+			<% fridge.GetFoodItems().each do |ufi| %>
 				<li style="list-style: none">
 					<span style="font-weight:bold">
 						<%= link_to ufi.global_food_item.name, edit_user_food_item_path(ufi) %>
 					</span>
-					 - Try to finish by: <%= ufi.usebydate.strftime("%m/%d/%y") %>
-					  Cost: <%= number_to_currency(ufi.price, :unit => "$") %>
+					 - Try to finish by: <%= ufi.DisplayUseByDate() %>
+					  Cost: <%= ufi.DisplayPrice() %>
 						| <%= link_to "Finished", user_food_item_path(ufi, :status => 1), method: "Delete", :remote => true %> 
 						<%= link_to "Threw Away", user_food_item_path(ufi, :status => 2), method: "Delete", :remote => true %>
 						<%= link_to "X", user_food_item_path(ufi, :status => "-1"), method: "Delete", :confirm => "Are you sure? Use this only if you accidentally added this item.", :remote => true %>
